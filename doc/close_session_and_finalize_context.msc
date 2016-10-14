@@ -1,0 +1,18 @@
+msc {
+	hscale = "0.9", wordwraparcs = on;
+
+	a [label="gp_client_api_example\nuser space"],
+	b [label="gp client api example\nTEE Driver"],
+	f [label="TEE Core"],
+	g [label="TA"];
+
+	||| ;
+	a=>b [ label = "Close\nSession" ];
+	b=>f [ label = "Close\nSession" ];
+	f=>g [ label = "TA_CloseSessionEntryPoint" ];
+	g>>f ;
+	f>>b ;
+	b>>a ;
+	a=>b [ label = "Finalize\nContext" ];
+	b>>a ;
+}
